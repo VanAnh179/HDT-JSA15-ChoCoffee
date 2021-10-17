@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+    <style>
+        * {
+            margin: 0px;
+        }
+
+        body {
+            background-color: #683618;
+            color: #461b09;
+        }
+
+        .navbar {
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 57px;
+            background-image: linear-gradient(180deg, #461b09, #b86e39);
+            color: #e4cba6;
+            position: fixed;
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .footer {
+            position: relative;
+            width: 100%;
+            bottom: 0px;
+            height: 130px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            background-image: linear-gradient(180deg, #b86e39, #461b09);
+            color: #e4cba6;
+        }
+
+        .body {
+            position: relative;
+            display: inline-block;
+            width: 60%;
+            height: 600px;
+            background-color: #e4cba6ef;
+            bottom: -6px;
+        }
+
+        .container {
+            box-sizing: border-box;
+            border: 6px solid red;
+            width: 100%;
+            text-align: center;
+        }
+
+        .voldemo {
+            bottom: -6px;
+            border: 5px solid black;
+            position: relative;
+            width: 23%;
+            float: right;
+            height: 600px;
+            background-color: #e4cba6ef;
+            box-sizing: border-box;
+        }
+
+
+
+
+
+        #volume_slider {
+            position: relative;
+            border-radius: 13px;
+            -webkit-appearance: none;
+            background-image: linear-gradient(180deg, #cc6337, #cea569);
+            border: 2px solid #965731;
+            width: 57%;
+            height: 13px;
+            margin: 19px;
+            box-sizing: border-box;
+        }
+
+        #volume_slider::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 3px;
+            cursor: pointer;
+            background: var(--buffered-width);
+        }
+
+        #volume_slider::-webkit-slider-thumb {
+            position: relative;
+            -webkit-appearance: none;
+            box-sizing: content-box;
+            border: 1px solid #683618;
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            background-color: #e4cba6;
+            cursor: pointer;
+            margin: -7px 0 0 0;
+        }
+
+        #volume_slider:active::-webkit-slider-thumb {
+            transform: scale(1.2);
+            background: #6e360d;
+        }
+
+        output {
+            display: inline-block;
+            width: 25px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+
+        .volControl {
+            display: flex;
+            line-height: 52px;
+        }
+        #mute {
+            width: 20px;
+            position: relative;
+            top: 3px;
+        }
+
+
+
+
+        #playlist {
+            text-align: left;
+            list-style: none;
+        }
+        #playlist li a{
+            color: #461b09;
+            text-decoration: none;
+        }
+        #playlist .currentSong a {
+            color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <div class="navbar"></div> -->
+        <div class="body">
+            <audio controls id="audioPlayer">
+                <source id="audioSource" src=""></source>
+                Your browser doesn't support html5! You're Dummy!      
+            </audio>
+            <ul id="playlist">
+                <li class="currentSong"><a href="./Music/Biscuit (Prod. by Lukrembo).wav" class="track">Biscuit</a></li>
+                <li><a href="./Music/Branch (Prod. by Lukrembo).wav" class="track">Branch</a></li>
+                <li><a href="./Music/Chocolate (Prod. by Lukrembo).wav" class="track">Chocolate</a></li>
+            </ul>
+
+        </div>
+
+
+        <div class="voldemo">
+            <div>
+                <audio id="audio" controls src="./Music/Marshmallow (Prod. by Lukrembo).wav"></audio>
+                <form class="volControl" oninput="volume_value.value = parseInt(volume_slider.value)">
+                    <output name="volume_value" id="volume_output" for="volume_slider">100</output>
+                    <input type="range" id="volume_slider" value="100">
+                    <div id="mute_icon">
+                        <img id="mute" src="http://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg"
+                            alt="Mute_Icon.svg" title="Mute icon">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="footer">
+            <div id="demo">d</div>
+        </div>
+    </div>
+    <script>
+        // Volume controller (for Playlist)
+        const volumeSlider = document.getElementById('volume_slider');
+        const audio = document.getElementById('audioPlayer');
+
+        volumeSlider.addEventListener('input', function () {
+            const value = volumeSlider.value;
+            // console.log(volumeSlider.value);
+            audio.volume = value / 100;
+        });
+
+        // mute btn
+        const muteI = document.getElementById('mute_icon');
+        const mute = document.getElementById('mute');
+        muteI.addEventListener('click', function (evt) {
+            evt.preventDefault();
+            if (audio.muted == false) {
+                audio.muted = true;
+                mute.src = 'http://upload.wikimedia.org/wikipedia/commons/3/3f/Mute_Icon.svg';
+            } else if (audio.muted == true) {
+                audio.muted = false;
+                mute.src = 'http://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg';
+            }
+        })
+
+        // Playlist
+        playlist.onclick = function(e) {
+            e.preventDefault();
+            var audio = document.getElementById('audioPlayer');
+            var src = document.getElementById('audioSource');
+            src.src = e.target.getAttribute('href');
+            audio.load();
+            audio.play();        
+        };
+
+        var track = [{
+            track: 1,
+            name: Biscuit - Lukrembo,
+            duration: '2:46',
+            file: 
+        }]
+
+
+    </script>
+</body>
+
+</html>

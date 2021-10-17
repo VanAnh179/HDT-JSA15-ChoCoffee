@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>I Love My ChoCoffee🤎🤎🤎</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="contain">
+        <div class="header">
+            <nav>
+                <ul class="menu">
+                    <li class="menuEffect logo">I Love My ChoCoffee</li>
+                    <li class="menuEffect dropdown">
+                        <span>Theme</span>
+                        <div class="PL_content">
+                            <button id="dark" onclick="darkMode()">WhiteChocolate</button>
+                            <button id="light" class="currentTheme" onclick="lightMode()">DarkChocolate</button>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+        <div id="body">
+            <div id="intro">
+                <div id="transbox">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore eum consequatur esse pariatur,
+                        cumque dignissimos repudiandae voluptas odio ullam vero cum ab accusantium eaque. A hic repellat
+                        nesciunt dolor architecto! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis deserunt
+                        molestias dicta nam, iusto accusantium eveniet qui aliquam odit repudiandae quia veritatis aliquid
+                        deleniti minima mollitia ab, facilis consequuntur. Ipsum.
+                    </p>
+                </div>
+                <!-- <img src="./Image/photo-1484704849700-f032a568e944.jfif" alt=""> -->
+            </div>
+            <h2 id="title">🍫Choose your Sounds...☕👌🏾</h2>
+            <audio id="audioPlayer" loop>
+                <source id="audioSource" src="">
+                </source>
+                Your browser doesn't support html5! Dummy!
+            </audio>
+            <div id="Sounds">
+                <a class="trackHoverWhite tracks" href="./Music/apathetic.mp3">apathetic</a>
+                <a class="trackHoverWhite tracks" href="./Music/Biscuit (Prod. by Lukrembo).wav">Biscuit</a>
+                <a class="trackHoverWhite tracks" href="./Music/Branch (Prod. by Lukrembo).wav">Branch</a>
+                <a class="trackHoverWhite tracks" href="./Music/Bread (Prod. by Lukrembo).wav">Bread</a>
+                <a class="trackHoverWhite tracks" href="./Music/Chocolate (Prod. by Lukrembo).wav">Chocolate</a>
+                <a class="trackHoverWhite tracks" href="./Music/Coffee.mp3">Coffee</a>
+                <a class="trackHoverWhite tracks" href="./Music/Cut Deep.mp3">Cut Deep</a>
+                <a class="trackHoverWhite tracks" href="./Music/deep space.mp3">deep space</a>
+                <a class="trackHoverWhite tracks" href="./Music/Diamond.mp3">Diamond</a>
+                <a class="trackHoverWhite tracks" href="./Music/Dreaming.mp3">Dreaming</a>
+                <a class="trackHoverWhite tracks" href="./Music/giving up.mp3">giving up</a>
+                <a class="trackHoverWhite tracks" href="./Music/Hopes.mp3">Hopes</a>
+                <a class="trackHoverWhite tracks" href="./Music/i dont wanna feel.mp3">i dont wanna feel</a>
+                <a class="trackHoverWhite tracks" href="./Music/Lamp (Prod. by Lukrembo).wav">Lamp</a>
+                <a class="trackHoverWhite tracks" href="./Music/Marshmallow (Prod. by Lukrembo).wav">Marshmallow</a>
+                <a class="trackHoverWhite tracks" href="./Music/mortal.mp3">mortal</a>
+                <a class="trackHoverWhite tracks" href="./Music/myself & i.mp3">myself & i</a>
+                <a class="trackHoverWhite tracks" href="./Music/Rose (Prod. by Lukrembo).wav">Rose</a>
+                <a class="trackHoverWhite tracks" href="./Music/Teapot (Prod. by Lukrembo).wav">Teapot</a>
+                <a class="trackHoverWhite tracks" href="./Music/Wine (Prod. by Lukrembo).wav">Wine</a>
+            </div>
+        </div>
+
+
+        <div id="aside">
+            <form id="audioBox">
+                <div id="audioControl">
+                    <p id="trackName">"track's name"</p>
+
+                    <div id="timeControl">
+                        <div class="playBtn" onclick="myFunction()">
+                            <img id="play" src="./Image/play.png">
+                        </div>
+                        <form oninput="duration_value = seek_slider.value">
+                            <output name="duration_value" id="current_time" for="seek_slider">0:00</output>
+                            <input type="range" id="seek_slider" value="0">
+                            <output id="duration">0:00</output>
+                        </form>
+                    </div>
+                    <form id="volControl" oninput="volume_value.value = parseInt(volume_slider.value)">
+                        <output name="volume_value" id="volume_output" for="volume_slider">100</output>
+                        <input type="range" id="volume_slider" value="100" onchange="changeVolume(this.value)">
+                        <div id="mute_icon">
+                            <img id="mute" src="http://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg"
+                                alt="Mute_Icon.svg" title="Mute icon">
+                        </div>
+                    </form>
+                </div>
+                <div class="form">
+                    <form id="formContainer">
+                        <h1>Sign up</h1>
+                        <p>Sign up to receive new products!</p>
+                        <label for="name">Name:</label><br>
+                        <input placeholder="No more than 20 characters" id="name" name="name" type="text" required="">
+                        <br>
+                        <label for="password">Email:</label><br>
+                        <input placeholder="xxxxx@gmail.com" id="email" name="email" type="email" required="">
+                        <br>
+                        <button>Submit</button>
+                    </form>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="footer">
+            <h2>Follow us:</h2>
+            <nav>
+                <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+                <a href="https://twitter.com/" class="fa fa-twitter"></a>
+                <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+                <a href="https://www.pinterest.com/" class="fa fa-pinterest"></a>
+                <a href="https://www.snapchat.com/" class="fa fa-snapchat-ghost"></a>
+                <a href="https://www.skype.com/" class="fa fa-skype"></a>
+            </nav>
+            <p>COPYRIGHT © 2021 - 2022 I Love My ChoCoffee | PRIVACY POLICY</p>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
