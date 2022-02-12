@@ -31,6 +31,12 @@ audio.addEventListener('timeupdate', () => {
 });
 
 
+navInput = document.getElementById('navMobileInput');
+function closeNavMb() {
+    navInput.checked = true;
+}
+
+
 // Dark/light mode
 let theme = document.getElementById('body').style;
 intro = document.getElementById('intro').style;
@@ -40,7 +46,8 @@ track = document.getElementsByClassName('tracks');
 Sound = document.getElementById('Sounds').style;
 audioControl = document.getElementById('audioControl').style;
 audioBox = document.getElementById('audioBox').style;
-formContainer = document.getElementById('formContainer').style;
+formContainerM = document.getElementById('formContainerM').style;
+formContainerC = document.getElementById('formContainerC').style;
 dark = document.getElementById('dark');
 light = document.getElementById('light')
 function darkMode() {
@@ -56,12 +63,14 @@ function darkMode() {
     Sound.color = '#6e360d';
     Sound.borderColor = '#b38b4f';
     audioBox.borderColor = '#e2b97a';
-    audioBox.background = '#662e06';
+    audioBox.background = '#662e069d';
     trackName.style.background = '#daaa7b';
     audioControl.background = '#daaa7b';
     audioControl.boxShadow = '5px 7px #3b1702';
-    formContainer.background = '#daaa7b';
-    formContainer.boxShadow = '8px 13px #3b1702';
+    formContainerC.background = '#daaa7b';
+    formContainerC.boxShadow = '8px 13px #3b1702';
+    formContainerM.background = '#daaa7b';
+    formContainerM.boxShadow = '8px 13px #3b1702';
     for (let i = 0; i < track.length; i++) {
         track[i].classList.remove('trackHoverWhite');
         track[i].classList.add('trackHoverDark');
@@ -80,12 +89,14 @@ function lightMode() {
     Sound.color = '#e4cba6';
     Sound.borderColor = '#301104';
     audioBox.borderColor = 'black';
-    audioBox.background = '#e4cba6';
+    audioBox.background = '#e4cba69d';
     trackName.style.background = '#e2b97a';
     audioControl.background = '#e2b97a';
     audioControl.boxShadow = '5px 7px #c59466';
-    formContainer.background = '#e2b97a';
-    formContainer.boxShadow = '8px 13px #c59466';
+    formContainerC.background = '#e2b97a';
+    formContainerC.boxShadow = '8px 13px #c59466';
+    formContainerM.background = '#e2b97a';
+    formContainerM.boxShadow = '8px 13px #c59466';
     for (let i = 0; i < track.length; i++) {
         track[i].classList.add('trackHoverWhite');
         track[i].classList.remove('trackHoverDark');
@@ -106,10 +117,10 @@ muteI.addEventListener('click', function (evt) {
     evt.preventDefault();
     if (audio.muted == false) {
         audio.muted = true;
-        mute.src = './Image/mute.png';
+        mute.src = '../Image/mute.png';
     } else if (audio.muted == true) {
         audio.muted = false;
-        mute.src = './Image/unmute.png';
+        mute.src = '../Image/unmute.png';
     }
 })
 
@@ -119,10 +130,10 @@ function myFunction(e) {
     var playBtn = document.getElementById('play')
     if (audio.paused) {
         audio.play();
-        playBtn.src = './Image/play.png'
+        playBtn.src = '../Image/play.png';
     } else {
         audio.pause();
-        playBtn.src = './Image/pause.png'
+        playBtn.src = '../Image/pause.png';
     }
 }
 
@@ -136,35 +147,152 @@ Sounds.onclick = function(e) {
 };
 // track's name
 let trackName = document.getElementById('trackName');
+aside = document.getElementById('aside');
+
 for (let index = 0; index < track.length; index++) {
-    track[index].addEventListener('click', (e) => {
+    track[index].addEventListener('click', () => {
         trackName.innerHTML = track[index].innerHTML;
-        trackName.style.fontSize = '30px'
+        trackName.style.fontSize = '30px';
+        aside.style.display = 'block';
     }) 
+}
+// Close mobile audio
+function closeAudio() {
+    aside.style.display = 'none';
+    audio.pause();
 }
 
 
 // form
+let formMobile = document.querySelector('.formMobile');
+const formSubmitC = document.getElementById("formContainerC");
+const formSubmitM = document.getElementById("formContainerM");
+const signInM = document.getElementById('signInM');
+function signUp() {
+    formMobile.style.display = 'block';
+    signInM.style.display ='none';
+    formSubmitM.style.display ='block';
+}
+function closeF() {
+    formMobile.style.display = 'none';
+}
+function signIn() {
+    formMobile.style.display = 'block';
+    formSubmitM.style.display ='none';
+    signInM.style.display ='block';
+}
+
+
 let Info = []
 if (!(JSON.parse(localStorage.getItem('Info')))) {
     localStorage.setItem("Info", JSON.stringify(Info));
 }
-const formSubmit = document.getElementById("formContainer");
-formSubmit.addEventListener("submit", function(event) {
+
+formSubmitC.addEventListener("submit", function(event) {
     event.preventDefault();
     const data={
-    name: formSubmit.name.value.trim(),
-    email: formSubmit.email.value.trim(),
+    name: formSubmitC.nameC.value.trim(),
+    email: formSubmitC.emailC.value.trim(),
+    password: formSubmitC.passwordC.value.trim(),
     }
     
-    let x = JSON.parse(localStorage.getItem("Info"))
+    let x = JSON.parse(localStorage.getItem("Info"));
     if (x.length > 0) {
     Info = [...x];
     }
     Info.push(data);
-    localStorage.setItem("Info", JSON.stringify(Info))
+    localStorage.setItem("Info", JSON.stringify(Info));
 
-    formSubmit.name.value = "";
-    formSubmit.email.value = "";
-    window.location.href = "afterSign-in.html";
+    formSubmitC.nameC.value = "";
+    formSubmitC.emailC.value = "";
+    formSubmitC.passwordC.value = "";
+    alert('You have created new account');
+    closeF();
+    // window.location.href = "../HTML/afterSign-in.html";
 })
+formSubmitM.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const data={
+    name: formSubmitM.nameM.value.trim(),
+    email: formSubmitM.emailM.value.trim(),
+    password: formSubmitM.passwordM.value.trim(),
+    }
+    
+    let x = JSON.parse(localStorage.getItem("Info"));
+    if (x.length > 0) {
+    Info = [...x];
+    }
+    Info.push(data);
+    localStorage.setItem("Info", Info);
+
+    formSubmitM.nameM.value = "";
+    formSubmitM.emailM.value = "";
+    formSubmitM.passwordM.value = "";
+    alert('You have created new account');
+    closeF();
+    // window.location.href = "../HTML/afterSign-in.html";
+    
+    
+})
+
+// storeInfo.forEach(function(item) {
+//     console.log(item);
+// });
+// for (let k = 0; k < storeInfo.length; k++) {
+        
+//         
+// }
+
+
+// let storeInfo = JSON.parse(localStorage.getItem("Info"));         
+   
+// function check(eve) {
+//     eve.preventDefault();
+    
+//     const data={
+//         email: signInM.userMail.value.trim(),
+//         password: signInM.userPw.value.trim(),
+//     }
+//     console.log(data)
+    // storeInfo.forEach(function(item) {
+    //     var aProps = Object.getOwnPropertyNames(item);
+    //     for (let b = 0; b < aProps.length; b++) {
+    //     var propName = aProps[b];          
+    //      // Nếu giá trị của cùng một property mà không bằng nhau,
+    //      // thì 2 objects không bằng nhau.
+    //     if (item[propName] !== data[propName]) {             
+    //         console.log('hi');      
+    //     } else {
+    //         console.log('bye');
+    //     }
+    //     }
+    // });
+    
+     
+    // let userMail = document.getElementById("userMail");
+    //     let userPw = document.getElementById("userPw");
+    //     if (userMail.value == storeMail
+    //     &&
+    //     userPw.value == storePw
+    //     ) {
+    //     alert("You are logged in");
+    //     // function toHomePage() {
+    //     //     window.location.replace("http://stackoverflow.com")
+    //     // };
+    //     // ;
+    //     // break;
+    //     }
+    //     else {
+    //     alert("Error on login");
+    //     // break;
+    //     }
+    }
+    
+    
+    // lấy thành công email + password
+  
+    // C2:
+    // let storePw = localStorage.getItem("pw")
+  
+    
+
