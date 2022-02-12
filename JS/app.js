@@ -286,7 +286,7 @@ formSubmitM.addEventListener("submit", function(event) {
     //     alert("Error on login");
     //     // break;
     //     }
-    }
+    // }
     
     
     // lấy thành công email + password
