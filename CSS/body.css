@@ -486,6 +486,9 @@ output {
     height: 40px;
     margin-top: 3px;
 }
+#play:hover, #mute:hover {
+    cursor: pointer;
+}
 .playBtn {
     display: flex;
 }
