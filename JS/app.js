@@ -124,11 +124,11 @@ muteI.addEventListener('click', function (evt) {
         mute.src = '../Image/unmute.png';
     }
 })
-
+var playBtn = document.getElementById('play')
 // Play/Pause Button:
 function myFunction(e) {
     
-    var playBtn = document.getElementById('play')
+    
     if (audio.paused) {
         audio.play();
         playBtn.src = '../Image/play.png';
@@ -145,6 +145,9 @@ Sounds.onclick = function(e) {
     src.src = e.target.getAttribute('href');
     audio.load();
     audio.play();
+    playBtn.src = '../Image/play.png';
+    audio.muted = false;
+    mute.src = '../Image/unmute.png';
 };
 
 // track's name
