@@ -136,7 +136,7 @@
         display: none;
     }
     #audioBox {
-        top: 50%;
+        /* top: 50%; */
         border-radius: 10px;
         position: fixed;
         width: 29.2%;
