@@ -3,6 +3,7 @@
     box-sizing: border-box;
 }
 body {
+    font-family: 'Akaya Telivigala', cursive;
     display: flex;
     justify-content: center;
     background-image: url('https://i.pinimg.com/originals/94/29/08/9429080dd8395cffa9a6eb1a2aa061bc.jpg');
@@ -86,7 +87,8 @@ h3 {
         flex-direction: row;
         align-items: center;
         border-bottom: 2px solid wheat;
-        background-image: linear-gradient(180deg, #461b09, #b86e39);
+        /* background-color: #9e4822; */
+        background-image: linear-gradient(180deg, #7e2f0d, #b86e39);
     }
     .logo {
         border-top: 3px solid #461b09;
@@ -95,6 +97,7 @@ h3 {
         font-size: 150%;
     }
     .fa {
+        border-radius: 10px;
         width: 45px;
         font-size: 17px;
     }
@@ -110,7 +113,7 @@ h3 {
         bottom: 0;
         width: 310px;
         max-width: 100%;
-        background-image: linear-gradient(180deg, #461b09, #b86e39);
+        background-image: linear-gradient(180deg, #812d09, #b86e39);
         color: #e4cba6;
         position: fixed;
         z-index: 5;
@@ -118,7 +121,6 @@ h3 {
         transition: all 0.5s;
     }
     .navBarsBtn {
-        line-height: 3.8;
         margin-right: 10px;
         display: block;
     }
@@ -133,6 +135,7 @@ h3 {
         margin-top: 10px;
     }
     .fa {
+        border-radius: 10px;
         width: 35px;
         font-size: 10px;
     }
@@ -201,17 +204,22 @@ h3 {
     z-index: 1;
     position: fixed;
     justify-content: space-between;
+    align-items: center;
     display: flex;
     width: 100%;
     height: 57px;
     border-bottom: 2px solid wheat;
-    background-image: linear-gradient(180deg, #461b09, #b86e39);
+    background-image: linear-gradient(180deg, #7e2f0d, #b86e39);
 }
 .menu a {
     color: #e4cba6;
 }
 .logo {
+    margin-left: 10px;
     border-radius: 10px;
+}
+.logoM {
+    font-size: 40px;
 }
 .menu .menuEffect:hover{
     color:#ffffff;
@@ -275,7 +283,7 @@ h3 {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-image: linear-gradient(180deg, #b86e39, #461b09);
+    background-image: linear-gradient(180deg, #b86e39, #7e2f0d);
     color: #e4cba6;
     z-index: 1;
     border-top: 2px solid wheat;

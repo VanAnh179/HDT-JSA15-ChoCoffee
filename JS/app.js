@@ -31,6 +31,7 @@ audio.addEventListener('timeupdate', () => {
 });
 
 
+
 navInput = document.getElementById('navMobileInput');
 function closeNavMb() {
     navInput.checked = true;
@@ -145,6 +146,7 @@ Sounds.onclick = function(e) {
     audio.load();
     audio.play();
 };
+
 // track's name
 let trackName = document.getElementById('trackName');
 aside = document.getElementById('aside');
@@ -164,10 +166,18 @@ function closeAudio() {
 
 
 // form
-let formMobile = document.querySelector('.formMobile');
+let accNameM = document.getElementById('accNameM');
+let accNameC = document.getElementById('accNameC');
+let LOM = document.getElementById('logOutM');
+let LOC = document.getElementById('logOutC');
+let log = document.getElementsByClassName('log');
+let formMobile = document.getElementById('formMobile');
+let errorLoginC = document.getElementById('errorLoginC');
+let errorLoginM = document.getElementById('errorLoginM');
 const formSubmitC = document.getElementById("formContainerC");
 const formSubmitM = document.getElementById("formContainerM");
 const signInM = document.getElementById('signInM');
+const signInC = document.getElementById('signInC');
 function signUp() {
     formMobile.style.display = 'block';
     signInM.style.display ='none';
@@ -175,19 +185,43 @@ function signUp() {
 }
 function closeF() {
     formMobile.style.display = 'none';
+    errorLoginM.style.display = 'none';
+    errorLoginC.style.display = 'none';
 }
 function signIn() {
     formMobile.style.display = 'block';
     formSubmitM.style.display ='none';
     signInM.style.display ='block';
 }
-
-
-let Info = []
-if (!(JSON.parse(localStorage.getItem('Info')))) {
-    localStorage.setItem("Info", JSON.stringify(Info));
+function loginC() {
+    formSubmitC.style.display ='none';
+    signInC.style.display = 'block';
+    errorLoginC.style.display = 'none';
+}
+function regC() {
+    formSubmitC.style.display ='block';
+    signInC.style.display = 'none';
+    errorLoginC.style.display = 'none';
 }
 
+
+let Info = [];
+let userData = [];
+let demoData = {
+    name: '1',
+    email: 'ab@gmail.com',
+    password: '1',
+}
+if (!(JSON.parse(localStorage.getItem('Info')))) {
+    Info.push(demoData);
+    localStorage.setItem("Info", JSON.stringify(Info));
+}
+if (!(JSON.parse(localStorage.getItem('userData')))) {
+    localStorage.setItem("userData", JSON.stringify(userData));
+}
+let storeUserData = JSON.parse(localStorage.getItem("userData"));
+let storeInfo = JSON.parse(localStorage.getItem("Info"));
+console.log(storeInfo);
 formSubmitC.addEventListener("submit", function(event) {
     event.preventDefault();
     const data={
@@ -195,20 +229,41 @@ formSubmitC.addEventListener("submit", function(event) {
     email: formSubmitC.emailC.value.trim(),
     password: formSubmitC.passwordC.value.trim(),
     }
-    
-    let x = JSON.parse(localStorage.getItem("Info"));
-    if (x.length > 0) {
-    Info = [...x];
+    let a = true;
+    for (let q = 0; q < storeInfo.length; q++) {
+        if (data.email === storeInfo[q].email) {
+            a = false;
+        }
     }
-    Info.push(data);
-    localStorage.setItem("Info", JSON.stringify(Info));
-
-    formSubmitC.nameC.value = "";
-    formSubmitC.emailC.value = "";
-    formSubmitC.passwordC.value = "";
-    alert('You have created new account');
-    closeF();
-    // window.location.href = "../HTML/afterSign-in.html";
+    if (a == false) {
+        // console.log('bye');
+        formSubmitC.nameC.value = "";
+        formSubmitC.emailC.value = "";
+        formSubmitC.passwordC.value = "";
+        alert('This account already exists. Please try to login.');
+    } else if (formSubmitC.passwordC.value.length < 8) {
+        formSubmitC.passwordC.value = "";
+        alert('Password must be at least 8 characters long.');
+    } else if (formSubmitC.nameC.value.length > 10) {
+        formSubmitC.nameC.value = "";
+        formSubmitC.passwordC.value = "";
+        alert('Account name cannot exceed 10 characters.');
+    } else if (a == true) {
+        if (storeInfo.length > 0) {
+            Info = [...storeInfo];
+        }
+        Info.push(data);
+        localStorage.setItem("Info", JSON.stringify(Info));
+        formSubmitC.nameC.value = "";
+        formSubmitC.emailC.value = "";
+        formSubmitC.passwordC.value = "";
+        alert('You have created new account');
+        closeF();
+        location.reload();
+    } else {
+        alert('ERROR. PLEASE TRY AGAIN.')
+        location.reload();
+    }
 })
 formSubmitM.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -217,82 +272,141 @@ formSubmitM.addEventListener("submit", function(event) {
     email: formSubmitM.emailM.value.trim(),
     password: formSubmitM.passwordM.value.trim(),
     }
-    
-    let x = JSON.parse(localStorage.getItem("Info"));
-    if (x.length > 0) {
-    Info = [...x];
+    let a = true;
+    for (let q = 0; q < storeInfo.length; q++) {
+        if (data.email === storeInfo[q].email) {
+            a = false;
+        }
     }
-    Info.push(data);
-    localStorage.setItem("Info", Info);
+    if (a == false) {
+        // console.log('bye');
+        formSubmitM.nameM.value = "";
+        formSubmitM.emailM.value = "";
+        formSubmitM.passwordM.value = "";
+        alert('This account already exists. Please try to login.');
+    } else if (formSubmitM.passwordM.value.length < 8) {
+        formSubmitM.passwordM.value = "";
+        alert('Password must be at least 8 characters long.');
+    } else if (formSubmitM.nameM.value.length > 10) {
+        formSubmitM.nameM.value = "";
+        formSubmitM.passwordM.value = "";
+        alert('Account name cannot exceed 10 characters.');
+    } else if (a == true) {
+        if (storeInfo.length > 0) {
+            Info = [...storeInfo];
+        }
+        Info.push(data);
+        localStorage.setItem("Info", JSON.stringify(Info));
+        formSubmitM.nameM.value = "";
+        formSubmitM.emailM.value = "";
+        formSubmitM.passwordM.value = "";
+        alert('You have created new account');
+        closeF();
+        location.reload();
+    } else {
+        alert('ERROR. PLEASE TRY AGAIN.')
+        location.reload();
+    }
+    // console.log('bye');
+    // if (storeInfo.length > 0) {
+    //     Info = [...storeInfo];
+    // }
+    // Info.push(data);
+    // localStorage.setItem("Info", JSON.stringify(Info));
 
-    formSubmitM.nameM.value = "";
-    formSubmitM.emailM.value = "";
-    formSubmitM.passwordM.value = "";
-    alert('You have created new account');
-    closeF();
-    // window.location.href = "../HTML/afterSign-in.html";
-    
-    
+    // formSubmitM.nameM.value = "";
+    // formSubmitM.emailM.value = "";
+    // formSubmitM.passwordM.value = "";
+    // alert('You have created new account');
+    // closeF();
 })
 
-// storeInfo.forEach(function(item) {
-//     console.log(item);
-// });
-// for (let k = 0; k < storeInfo.length; k++) {
-        
-//         
-// }
 
+signInM.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const dataM={
+        email: signInM.userMail.value.trim(),
+        password: signInM.userPw.value.trim(),
+    };
 
-// let storeInfo = JSON.parse(localStorage.getItem("Info"));         
-   
-// function check(eve) {
-//     eve.preventDefault();
-    
-//     const data={
-//         email: signInM.userMail.value.trim(),
-//         password: signInM.userPw.value.trim(),
-//     }
-//     console.log(data)
+    for (let m = 0; m < storeInfo.length; m++) {
+        if  (dataM.email !== storeInfo[m].email || dataM.password !== storeInfo[m].password) {
+            signInM.userMail.value = '';
+            signInM.userPw.value = '';
+            errorLoginM.style.display = 'inline';
+        } else if (dataM.email === storeInfo[m].email && dataM.password === storeInfo[m].password) {
+            // accNameM.style.display = 'inline-block';
+            // accNameC.style.display = 'inline-block';
+            accNameC.innerHTML = storeInfo[m].name;
+            accNameM.innerHTML = storeInfo[m].name;
+            // for (let l = 0; l < log.length; l++) {
+            //     log[l].style.display = 'none'; 
+            // }
+            // closeF();
+            if (storeUserData.length > 0) {
+                userData = [...storeUserData];
+            }
+            userData.splice(1, accNameC.length);
+            userData.unshift(accNameC.innerHTML);
+            localStorage.setItem("userData", JSON.stringify(userData));
+            window.location.href = "../HTML/playlist1.html";
+            break;
+        } else {
+            alert('ERROR. PLEASE TRY AGAIN.')
+            location.reload();
+        }
+    };
     // storeInfo.forEach(function(item) {
-    //     var aProps = Object.getOwnPropertyNames(item);
-    //     for (let b = 0; b < aProps.length; b++) {
-    //     var propName = aProps[b];          
-    //      // Nếu giá trị của cùng một property mà không bằng nhau,
-    //      // thì 2 objects không bằng nhau.
-    //     if (item[propName] !== data[propName]) {             
-    //         console.log('hi');      
-    //     } else {
-    //         console.log('bye');
-    //     }
+    //     let aProps = Object.values(item);
+    //     // console.log(aProps[1], aProps[2]);
+    //     if (aProps[2] !== Object.values(dataM)[1] || aProps[1] !== Object.values(dataM)[0]) {
+    //         signInM.userMail.value = '';
+    //         signInM.userPw.value = '';
+    //         errorLoginM.style.display = 'inline';
+    //     } else if (aProps[1] === Object.values(dataM)[0] && aProps[2] === Object.values(dataM)[1]) {
+    //         // accNameM.innerHTML = aProps[];
+    //         accNameM.style.display = 'inline-block';
+    //         accNameC.style.display = 'inline-block';
+    //         for (let l = 0; l < log.length; l++) {
+    //             log[l].style.display = 'none'; 
+    //         }
+    //         closeF();
     //     }
     // });
-    
-     
-    // let userMail = document.getElementById("userMail");
-    //     let userPw = document.getElementById("userPw");
-    //     if (userMail.value == storeMail
-    //     &&
-    //     userPw.value == storePw
-    //     ) {
-    //     alert("You are logged in");
-    //     // function toHomePage() {
-    //     //     window.location.replace("http://stackoverflow.com")
-    //     // };
-    //     // ;
-    //     // break;
-    //     }
-    //     else {
-    //     alert("Error on login");
-    //     // break;
-    //     }
-    // }
-    
-    
-    // lấy thành công email + password
-  
-    // C2:
-    // let storePw = localStorage.getItem("pw")
-  
-    
-
+});
+signInC.addEventListener('submit', function(event) {
+    event.preventDefault();
+    // console.log(signInM.userMail.value);
+    const dataC={
+        email: signInC.userMailC.value.trim(),
+        password: signInC.userPwC.value.trim(),
+    };
+    for (let m = 0; m < storeInfo.length; m++) {
+        if  (dataC.email !== storeInfo[m].email || dataC.password !== storeInfo[m].password) {
+            signInC.userMailC.value = '';
+            signInC.userPwC.value = '';
+            errorLoginC.style.display = 'inline';
+        } else if (dataC.email === storeInfo[m].email && dataC.password === storeInfo[m].password) {
+            // accNameM.style.display = 'inline-block';
+            // accNameC.style.display = 'inline-block';
+            // LOC.style.display = 'inline-block';
+            // LOM.style.display = 'inline-block';
+            accNameC.innerHTML = storeInfo[m].name;
+            accNameM.innerHTML = storeInfo[m].name;
+            // for (let l = 0; l < log.length; l++) {
+            //     log[l].style.display = 'none'; 
+            // }
+            if (storeUserData.length > 0) {
+                userData = [...storeUserData];
+            }
+            userData.push(accNameC.innerHTML);
+            localStorage.setItem("userData", JSON.stringify(userData));
+            closeF();
+            window.location.href = "../HTML/playlist1.html";
+            break;
+        } else {
+            alert('ERROR. PLEASE TRY AGAIN.')
+            location.reload();
+        }
+    };
+});

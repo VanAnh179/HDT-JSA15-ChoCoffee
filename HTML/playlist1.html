@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>ChoCoffee🤎🤎🤎</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&family=Redressed&display=swap" rel="stylesheet">
+    <link rel='shortcut icon' href='../Image/Weather/Weather/1 -1.png' />
+    <link rel="stylesheet" href="../CSS/menu&footer.css">
+    <link rel="stylesheet" href="../CSS/body.css">
+    <link rel="stylesheet" href="../CSS/userPl.css">
+</head>
+
+<body>
+    <div id="home" class="contain">
+        <div class="header">
+            <div class="menu2">
+                <a href="#home"><div class="menuEffect logo mobileL">ChoCoffee</div></a>
+                <label for="navMobileInput" class="navBarsBtn">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars"
+                        class="svg-inline--fa fa-bars fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 448 512">
+                        <path fill="currentColor"
+                            d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z">
+                        </path>
+                    </svg>
+                </label>
+            </div>
+            <nav class="navPC">
+                <ul class="menu">
+                    <a href="#home">
+                        <li class="menuEffect logo">ChoCoffee</li>
+                    </a>
+                    <li class="menuEffect dropdown">
+                        <span>Theme</span>
+                        <div class="PL_content">
+                            <button id="dark" onclick="darkMode()">WhiteChocolate</button>
+                            <button id="light" class="currentTheme" onclick="lightMode()">DarkChocolate</button>
+                        </div>
+                    </li>
+                    <li class="menuEffect" id="accNameC">''</li>
+                    <li class="menuEffect" id="logOutC">Log out</li>
+                </ul>
+            </nav>
+
+            <input type="checkbox" hidden name="" class="navInput" id="navMobileInput" />
+
+            <nav class="navMobile">
+                <label for="navMobileInput" class="navMobileClose" onclick="closeNavMb()">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times"
+                        class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 352 512">
+                        <path fill="currentColor"
+                            d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z">
+                        </path>
+                    </svg>
+                </label>
+                <ul class="menu">
+                    <a href="#home">
+                        <li class="menuEffect logo logoM">ChoCoffee</li>
+                    </a>
+                    <li class="cMode">
+                        <span class="navHover">Theme</span>
+                        <div class="cModeList">
+                            <div id="dark" onclick="darkMode()">WhiteChocolate</div>
+                            <div id="light" class="currentTheme" onclick="lightMode()">DarkChocolate</div>
+                        </div>
+                    </li>
+                    <li class="navHover navTitle" id="accNameM">''</li>
+                    <li class="navHover navTitle" id="logOutM">Log out</li>
+                </ul>
+            </nav>
+
+            <label for="navMobileInput" class="navOverlay"></label>
+        </div>
+
+        <div id="body">
+            <div id="intro">
+                <div id="transbox">
+                    <p>
+                        After a hard-working day, this is the place where you can find peace through music as a
+                        spiritual gift for yourself. So why not listen to these chilling songs with your coffee to make
+                        your day feel like eating a chocolate bar.
+                        <br>
+                        Let's dive into the world of music!
+                        <br><br>
+                        <span class="resource">MUSIC RESOURCES: Lukrembo, Prod. Riddiman.</span>
+                    </p>
+                </div>
+            </div>
+            <h2 id="title">🍫Choose your Sounds...☕👌🏾</h2>
+            <audio id="audioPlayer" loop>
+                <source id="audioSource" src="">
+                </source>
+                Your browser doesn't support html5! Dummy!
+            </audio>
+            <div id="Sounds">
+                <a class="trackHoverWhite tracks" href="../Music/apathetic.mp3">apathetic</a>
+                <a class="trackHoverWhite tracks" href="../Music/Biscuit (Prod. by Lukrembo).wav">Biscuit</a>
+                <a class="trackHoverWhite tracks" href="../Music/Branch (Prod. by Lukrembo).wav">Branch</a>
+                <a class="trackHoverWhite tracks" href="../Music/Bread (Prod. by Lukrembo).wav">Bread</a>
+                <a class="trackHoverWhite tracks" href="../Music/Chocolate (Prod. by Lukrembo).wav">Chocolate</a>
+                <a class="trackHoverWhite tracks" href="../Music/Coffee.mp3">Coffee</a>
+                <a class="trackHoverWhite tracks" href="../Music/Cut Deep.mp3">Cut Deep</a>
+                <a class="trackHoverWhite tracks" href="../Music/deep space.mp3">deep space</a>
+                <a class="trackHoverWhite tracks" href="../Music/Diamond.mp3">Diamond</a>
+                <a class="trackHoverWhite tracks" href="../Music/Dreaming.mp3">Dreaming</a>
+                <a class="trackHoverWhite tracks" href="../Music/giving up.mp3">giving up</a>
+                <a class="trackHoverWhite tracks" href="../Music/Hopes.mp3">Hopes</a>
+                <a class="trackHoverWhite tracks" href="../Music/i dont wanna feel.mp3">i dont wanna feel</a>
+                <a class="trackHoverWhite tracks" href="../Music/Lamp (Prod. by Lukrembo).wav">Lamp</a>
+                <a class="trackHoverWhite tracks" href="../Music/Marshmallow (Prod. by Lukrembo).wav">Marshmallow</a>
+                <a class="trackHoverWhite tracks" href="../Music/mortal.mp3">mortal</a>
+                <a class="trackHoverWhite tracks" href="../Music/myself & i.mp3">myself & i</a>
+                <a class="trackHoverWhite tracks" href="../Music/Rose (Prod. by Lukrembo).wav">Rose</a>
+                <a class="trackHoverWhite tracks" href="../Music/Teapot (Prod. by Lukrembo).wav">Teapot</a>
+                <a class="trackHoverWhite tracks" href="../Music/Wine (Prod. by Lukrembo).wav">Wine</a>
+            </div>
+        </div>
+
+        <div class="audioSide" id="aside">
+            <form id="audioBox">
+                <div id="closeAudio" onclick="closeAudio()">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times"
+                        class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 352 512">
+                        <path fill="currentColor"
+                            d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z">
+                        </path>
+                    </svg>
+                </div>
+                
+                <div id="audioControl">
+                    <p id="trackName">"track's name"</p>
+
+                    <div id="timeControl">
+                        <div class="playBtn" onclick="myFunction()">
+                            <img id="play" src="../Image/play.png">
+                        </div>
+                        <form oninput="duration_value = seek_slider.value">
+                            <output name="duration_value" id="current_time" for="seek_slider">0:00</output>
+                            <input type="range" id="seek_slider" value="0">
+                            <output id="duration">0:00</output>
+                        </form>
+                    </div>
+                    <form id="volControl" oninput="volume_value.value = parseInt(volume_slider.value)">
+                        <output name="volume_value" id="volume_output" for="volume_slider">100</output>
+                        <input type="range" id="volume_slider" value="100" onchange="changeVolume(this.value)">
+                        <div id="mute_icon">
+                            <img id="mute" src="http://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg"
+                                alt="Mute_Icon.svg" title="Mute icon">
+                        </div>
+                    </form>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="footer">
+            <h2>Follow us:</h2>
+            <nav>
+                <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+                <a href="https://twitter.com/" class="fa fa-twitter"></a>
+                <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+                <a href="https://www.pinterest.com/" class="fa fa-pinterest"></a>
+                <a href="https://www.snapchat.com/" class="fa fa-snapchat-ghost"></a>
+                <a href="https://www.skype.com/" class="fa fa-skype"></a>
+            </nav>
+            <p>COPYRIGHT © 2021 - 2022 ChoCoffee | PRIVACY POLICY</p>
+        </div>
+    </div>
+    <!-- <script src="http://code.jquery.com/jquery-1.7.min.js"></script> -->
+    <script src="../JS/user.js"></script>
+    <script src="../JS/pl1.js"></script>
+</body>
+
+</html>

@@ -6,17 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>I Love My ChoCoffee🤎🤎🤎</title>
+    <title>ChoCoffee🤎🤎🤎</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&family=Redressed&display=swap" rel="stylesheet">
     <link rel='shortcut icon' href='../Image/Weather/Weather/1 -1.png' />
     <link rel="stylesheet" href="../CSS/menu&footer.css">
     <link rel="stylesheet" href="../CSS/body.css">
+    <link rel="stylesheet" href="../CSS/Pl.css">
 </head>
 
 <body>
     <div id="home" class="contain">
         <div class="header">
             <div class="menu2">
-                <a href="#home"><div class="menuEffect logo mobileL">I Love My ChoCoffee</div></a>
+                <a href="#home"><div class="menuEffect logo mobileL">ChoCoffee</div></a>
                 <label for="navMobileInput" class="navBarsBtn">
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars"
                         class="svg-inline--fa fa-bars fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +34,7 @@
             <nav class="navPC">
                 <ul class="menu">
                     <a href="#home">
-                        <li class="menuEffect logo">I Love My ChoCoffee</li>
+                        <li class="menuEffect logo">ChoCoffee</li>
                     </a>
                     <li class="menuEffect dropdown">
                         <span>Theme</span>
@@ -45,6 +49,8 @@
                     <li class="menuEffect log" onclick="signUp()">
                         Sign-up
                     </li>
+                    <li class="menuEffect" id="accNameC">''</li>
+                    <li class="menuEffect" id="logOutC">Log out</li>
                 </ul>
             </nav>
 
@@ -62,7 +68,7 @@
                 </label>
                 <ul class="menu">
                     <a href="#home">
-                        <li class="menuEffect logo">I Love My ChoCoffee</li>
+                        <li class="menuEffect logo logoM">ChoCoffee</li>
                     </a>
                     <li class="cMode">
                         <span class="navHover">Theme</span>
@@ -71,19 +77,21 @@
                             <div id="light" class="currentTheme" onclick="lightMode()">DarkChocolate</div>
                         </div>
                     </li>
-                    <li class="navTitle navHover" onclick="signIn()">
+                    <li class="navTitle navHover log" onclick="signIn()">
                         Sign-in
                     </li>
-                    <li class="navTitle navHover" onclick="signUp()">
+                    <li class="navTitle navHover log" onclick="signUp()">
                         Sign-up
                     </li>
+                    <li class="navHover navTitle" id="accNameM">''</li>
+                    <li class="navHover navTitle" id="logOutM">Log out</li>
                 </ul>
             </nav>
 
             <label for="navMobileInput" class="navOverlay"></label>
         </div>
 
-        <div class="formMobile">
+        <div id="formMobile">
             <div class="overlay"></div>
             <div id="closeForm" onclick="closeF()">
                 <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times"
@@ -98,23 +106,26 @@
                 <h2>Sign up</h2>
                 <p>Sign up to receive more products!</p>
                 <label for="nameM">Name:</label><br>
-                <input placeholder="No more than 20 characters" id="nameM" name="name" type="text" required="">
+                <input placeholder="No more than 10 characters" id="nameM" name="name" type="text" required="">
                 <br>
                 <label for="emailM">Email:</label><br>
                 <input placeholder="xxxxx@gmail.com" id="emailM" name="email" type="email" required="">
                 <label for="passwordM">Password:</label><br>
-                <input placeholder="" id="passwordM" name="password" type="password" required="">
+                <input placeholder="At least 8 characters long" id="passwordM" name="password" type="password" required="">
                 <br>
                 <button>Submit</button>
+                <div>Already had an account? <span class="changeS" onclick="signIn()">Click here!</span></div>
             </form>
             <form class="formContainer" id="signInM">
                 <h2>Sign in</h2>
-                <label for="emailM">Email:</label><br>
-                <input placeholder="xxxxx@gmail.com" id="userMail" name="email" type="email" required="">
-                <label for="passwordM">Password:</label><br>
+                <label for="userMail">Email:</label><br>
+                <input placeholder="" id="userMail" name="email" type="email" required="">
+                <label for="userPw">Password:</label><br>
                 <input placeholder="" id="userPw" name="password" type="password" required="">
                 <br>
-                <button onclick="check()">Submit</button>
+                <div id="errorLoginM">Login error. Please try again.</div>
+                <button>Submit</button>
+                <div>Haven't got an account yet? <span class="changeS" onclick="signUp()">Click here!</span></div>
             </form>
         </div>
 
@@ -126,8 +137,9 @@
                         spiritual gift for yourself. So why not listen to these chilling songs with your coffee to make
                         your day feel like eating a chocolate bar.
                         <br>
-                        <br>
                         Let's dive into the world of music!
+                        <br><br>
+                        <span class="resource">MUSIC RESOURCES: Lukrembo, Prod. Riddiman.</span>
                     </p>
                 </div>
                 <!-- <img src="./Image/photo-1484704849700-f032a568e944.jfif" alt=""> -->
@@ -202,14 +214,26 @@
                         <h2>Sign up</h2>
                         <p>Sign up to receive more products!</p>
                         <label for="nameC">Name:</label><br>
-                        <input placeholder="No more than 20 characters" id="nameC" name="name" type="text" required="">
+                        <input placeholder="No more than 10 characters" id="nameC" name="name" type="text" required="">
                         <br>
                         <label for="emailC">Email:</label><br>
                         <input placeholder="xxxxx@gmail.com" id="emailC" name="email" type="email" required="">
                         <label for="passwordC">Password:</label><br>
-                        <input placeholder="" id="passwordC" name="password" type="password" required="">
+                        <input placeholder="At least 8 characters long" id="passwordC" name="password" type="password" required="">
                         <br>
                         <button>Submit</button>
+                        <div>Already had an account? <span class="changeS" onclick="loginC()">Click here!</span></div>
+                    </form>
+                    <form class="formContainer" id="signInC">
+                        <h2>Sign in</h2>
+                        <label for="emailC">Email:</label><br>
+                        <input placeholder="" id="userMailC" name="email" type="email" required="">
+                        <label for="passwordC">Password:</label><br>
+                        <input placeholder="" id="userPwC" name="password" type="password" required="">
+                        <br>
+                        <div id="errorLoginC">Login error. Please try again.</div>
+                        <button>Submit</button>
+                        <div>Haven't got an account yet? <span class="changeS" onclick="regC()">Click here!</span></div>
                     </form>
                 </div>
             </form>
@@ -226,10 +250,10 @@
                 <a href="https://www.snapchat.com/" class="fa fa-snapchat-ghost"></a>
                 <a href="https://www.skype.com/" class="fa fa-skype"></a>
             </nav>
-            <p>COPYRIGHT © 2021 - 2022 I Love My ChoCoffee | PRIVACY POLICY</p>
+            <p>COPYRIGHT © 2021 - 2022 ChoCoffee | PRIVACY POLICY</p>
         </div>
     </div>
-    <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+    <!-- <script src="http://code.jquery.com/jquery-1.7.min.js"></script> -->
     <script src="../JS/app.js"></script>
 </body>
 

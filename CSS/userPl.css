@@ -1,0 +1,12 @@
+@media (min-width: 1024px) and (min-height: 678px) {
+    #audioBox {
+        padding: 27px;
+        height: fit-content;
+    }
+}
+#accNameC {
+    /* top: -3px; */
+    cursor: cell;
+    color: #470702;
+    font-size: 27px;
+}

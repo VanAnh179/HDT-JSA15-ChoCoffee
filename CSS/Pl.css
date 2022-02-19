@@ -1,0 +1,8 @@
+@media (min-width: 1024px) and (min-height: 678px) {
+    #audioBox {
+        height: 625px;
+    }
+}
+#accNameM, #accNameC, #logOutM, #logOutC {
+    display: none;
+}
