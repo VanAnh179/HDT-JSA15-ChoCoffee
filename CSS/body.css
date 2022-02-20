@@ -252,12 +252,11 @@
 
 /* form */
 .overlay {
-    width: 10000px;
-    height: 10000px;
+    width: 100000px;
+    height: 100000px;
     background-color: #0000009a;
     position: fixed;
     /* z-index: 0; */
-    margin-top: 250px;
     top: -50%;
     left: -50%;
 }
